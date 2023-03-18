@@ -1,3 +1,5 @@
-﻿  1406.cpp
-D:\Github_Repository\BaekJoon\BaekJoonLetsGo\BaekJoonLetsGo\1406.cpp(17,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  5430.cpp
+D:\Github_Repository\BaekJoon\BaekJoonLetsGo\BaekJoonLetsGo\5430.cpp(47,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Github_Repository\BaekJoon\BaekJoonLetsGo\BaekJoonLetsGo\5430.cpp(59,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Github_Repository\BaekJoon\BaekJoonLetsGo\BaekJoonLetsGo\5430.cpp(81,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   BaekJoonLetsGo.vcxproj -> D:\Github_Repository\BaekJoon\BaekJoonLetsGo\Debug\BaekJoonLetsGo.exe

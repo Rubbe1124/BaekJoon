@@ -2,11 +2,11 @@
 #include<algorithm>
 #include<vector>
 #include<string>
-#include<stack>
+#include<deque>
 
 using namespace std;
 
-string work(string order, int arr_num);
+void work(string order, int arr_num);
 
 int main() {
 	cin.tie(NULL);
@@ -26,14 +26,12 @@ int main() {
 
 		
 
-		cout << work(order, arr_num);
+		work(order, arr_num);
 	}
 }
 
-string work(string order, int arr_num) {
-	vector<int> vec;
-
-	stack<int> st;
+void work(string order, int arr_num) {
+	deque<int> deq;
 
 	string arr;
 	cin >> arr;
@@ -44,47 +42,67 @@ string work(string order, int arr_num) {
 
 	bool flag = true;
 
-	for (int j = 0; j < arr.length(); j++) {
-		if (arr_num != 0) {
-			if (arr[j] == ',' || arr[j] == ']') {
 
-				vec.push_back(stoi(temp));
+	for (int j = 0; j < arr.length(); j++) {
+		if (isdigit(arr[j])) {
+			temp += arr[j];
+		}
+		else {
+			if (!temp.empty()) {
+				deq.push_back(stoi(temp));
 				temp = "";
-			}
-			else if (arr[j] != '[') {
-				temp += arr[j];
 			}
 		}
 	}
 	for (int j = 0; j < order.length(); j++) {
 		if (order[j] == 'R') {
-			//reverse(vec.begin(), vec.end());
 			flag = !flag;
 		}
 		else {
-			if (vec.size() == 0) {
-				ans = "error\n";
-				return ans;
+			if (deq.size() == 0) {
+				cout<<"error\n";
+				return ;
 			}
 			else if(flag){
-				vec.erase(vec.begin());
+				deq.pop_front();
 			}
 			else if (!flag) {
-				vec.erase(vec.end()-1);
+				deq.pop_back();
 			}
 		}
 	}
-	if (!flag) {
-		reverse(vec.begin(), vec.end());
-	}
-	ans += "[";
-	for (int i = 0; i < vec.size(); i++) {
-		if (i == vec.size() - 1) {
-			ans = ans + to_string(vec[i]) + "]\n";
+
+	cout<< "[";
+	if (flag) {
+		if (deq.size()==0) {
+
 		}
 		else {
-			ans = ans + to_string(vec[i])+",";
+			while (deq.size() != 1) {
+				cout<<deq.front() << ",";
+				deq.pop_front();
+			}
+			cout<<deq.front();
+			deq.pop_front();
 		}
+
 	}
-	return ans;
+	else {
+		if (deq.size() == 0) {
+
+		}
+		else {
+			while (deq.size() != 1) {
+				cout<<deq.back() << ",";
+				deq.pop_back();
+			}
+			cout<<deq.back();
+			deq.pop_back();
+		}
+
+	}
+	cout<< "]\n";
+
+
+	return;
 }

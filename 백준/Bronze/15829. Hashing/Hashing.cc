@@ -11,6 +11,7 @@ using namespace std;
 void sum(char a, int b);
 
 long long answer = 0;
+long long r = 1;
 
 int main() {
 	cin.tie(NULL);
@@ -28,13 +29,13 @@ int main() {
 	for (int i = 0; i < L; i++) {
 		sum(input[i], i);
 	}
-	cout << answer;
+	cout << answer%1234567891;
 }
 
 void sum(char a, int b) {
-	long long temp = a - '0';
+	int temp = a - '0';
 	temp -= 48;
-	temp = temp * (pow(31, b));
 
-	answer += temp;
+	answer += (temp * r) % 1234567891;
+	r = (r * 31) % 1234567891;
 }
